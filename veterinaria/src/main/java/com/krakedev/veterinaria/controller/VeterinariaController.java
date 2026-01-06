@@ -1,4 +1,4 @@
-package com.krakedev.veterinaria;
+package com.krakedev.veterinaria.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
