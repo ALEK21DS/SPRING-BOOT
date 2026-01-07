@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.krakedev.inventario.entity.Message;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PostMapping;
+
 
 @RestController
 @RequestMapping("/api/messages")
@@ -35,5 +38,12 @@ public class MessageController {
         findFirst();
 
         return mensaje.orElse(null);
+    }
+
+    @PostMapping
+    public Message crearMensaje(@RequestBody Message message){
+        mensajes.add(message);
+
+        return message;
     }
 }
