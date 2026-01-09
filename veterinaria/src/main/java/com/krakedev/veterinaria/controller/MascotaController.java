@@ -19,14 +19,6 @@ import com.krakedev.veterinaria.entity.Mascota;
 public class MascotaController {
     private List<Mascota> mascotas = new ArrayList<>();
 
-    public MascotaController(){
-        mascotas.add(new Mascota(1, "Firulais", "Perro", 3, "Juan Perez"));
-        mascotas.add(new Mascota(2, "Michi", "Gato", 2, "Ana Gomez"));
-        mascotas.add(new Mascota(3, "Nemo", "Pez", 1, "Carlos Lopez"));
-        mascotas.add(new Mascota(4, "Bobby", "Perro", 4, "Luisa Fernandez"));
-        mascotas.add(new Mascota(5, "Luna", "Gato", 5, "Miguel Torres"));
-    }
-
     @RequestMapping
     public List<Mascota> listarMascotas(){
         return mascotas;
