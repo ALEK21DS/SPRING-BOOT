@@ -1,0 +1,16 @@
+package com.krakedev.veterinaria.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import com.krakedev.veterinaria.entity.Mascota;
+
+public interface MascotaService {
+    Mascota registrarMascota(Mascota mascota);
+    List<Mascota> listarMascota();
+    Optional<Mascota> buscarPorNombre(String nombre);
+    Optional<Mascota> buscarPorId(Long id);
+    Mascota actualizaMascota(Long id, Mascota mascota);
+
+    void eliminarMascota(Long id);
+}
