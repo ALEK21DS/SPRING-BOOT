@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.krakedev.inventario.entity.EstadoProducto;
 import com.krakedev.inventario.entity.Producto;
 import com.krakedev.inventario.service.ProductoService;
 
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
+
 
 @RestController
 @RequestMapping("/api/productos")
@@ -78,6 +80,22 @@ public class ProductoController {
         } catch (Exception exception) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception.getMessage());
         }
+    }
+
+    @PutMapping("/estado/{id}")
+    public ResponseEntity<?> cambiarEstadoProducto(@PathVariable Long id, @RequestBody EstadoProducto estadoProducto) {
+        try{
+            Producto producto = productoService.cambiarEstaProducto(id, estadoProducto);
+            return ResponseEntity.ok(producto);
+        }catch(Exception exception){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception.getMessage());
+        }
+    }
+
+    @GetMapping("/estado/{estadoProducto}")
+    public ResponseEntity<List<Producto>> listarProductosPorEstado(@PathVariable EstadoProducto estadoProducto) {
+        List<Producto> productos = productoService.obtenerPorEstadoProductos(estadoProducto);
+        return ResponseEntity.ok(productos);
     }
 
 }
