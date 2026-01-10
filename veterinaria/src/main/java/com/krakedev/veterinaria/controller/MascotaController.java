@@ -68,7 +68,7 @@ public class MascotaController {
             Mascota mascotaBDD = mascotaService.actualizaMascota(id, mascotaActualizada);
             return ResponseEntity.ok(mascotaBDD);
         }catch(Exception exception){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception.getMessage());
         }
     }
 
@@ -78,7 +78,7 @@ public class MascotaController {
             mascotaService.eliminarMascota(id);
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         }catch(Exception exception){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception.getMessage());
         }
     }
     
